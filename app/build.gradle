@@ -13,6 +13,10 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
        // testInstrumentationRunner "android.test.InstrumentationTestRunner"
     }
+    lintOptions {
+        // I prefer avoiding a build fail if there is any warning, for they are only warnings
+        abortOnError false
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -21,7 +25,9 @@ android {
         debug {
             testCoverageEnabled true
         }
+
     }
+
 }
 
 dependencies {
