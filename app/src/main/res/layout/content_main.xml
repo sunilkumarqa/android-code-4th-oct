@@ -93,6 +93,7 @@
         >
 
         <TextView
+            android:id="@+id/createAcc"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:text="Create Account"
@@ -106,6 +107,7 @@
             />
 
         <TextView
+            android:id="@+id/forgotPswd"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:text="Forgot Password"
@@ -118,7 +120,14 @@
             android:layout_marginTop="5dp"
             />
 
-
     </LinearLayout>
+    <Button
+        android:id="@+id/exit"
+        android:text="Exit"
+        android:textSize="22sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
+
+

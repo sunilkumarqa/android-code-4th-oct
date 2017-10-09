@@ -12,12 +12,15 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import android.widget.Button;
+
 
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout signIn;
     EditText userName,password;
-    TextView result;
+    TextView result, createAcc, forgotPswd;
+    Button btnExit;
 
 
     @Override
@@ -31,6 +34,32 @@ public class MainActivity extends AppCompatActivity {
         userName = (EditText) findViewById(R.id.UserName);
         password = (EditText) findViewById(R.id.password);
         result = (TextView) findViewById(R.id.result_signin);
+
+        createAcc = (TextView)findViewById(R.id.createAcc);
+        forgotPswd = (TextView)findViewById(R.id.forgotPswd);
+        btnExit = (Button) findViewById(R.id.exit);
+
+        createAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Creating New Account", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        forgotPswd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "How come u forgot", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Exiting App", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     protected void onStop()
     {
         String coverageFilePath = Environment.getExternalStorageDirectory() + File.separator + "coverage.exec";
