@@ -1,6 +1,7 @@
 package com.writer.aspiring.unittestingdemo;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -8,6 +9,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.lang.reflect.Method;
+
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout signIn;
@@ -45,5 +50,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    protected void onStop()
+    {
+        String coverageFilePath = Environment.getExternalStorageDirectory() + File.separator + "coverage.exec";
+        File coverageFile = new File(coverageFilePath);
+        super.onStop();
+        if(BuildConfig.DEBUG)
+        {
+            try {
+                Class<?> emmaRTClass = Class.forName("com.vladium.emma.rt.RT");
+                Method dumpCoverageMethod = emmaRTClass.getMethod("dumpCoverageData",coverageFile.getClass(), boolean.class, boolean.class);
+                dumpCoverageMethod.invoke(null, "/sdcard/coverage.exec", true, false);
+            } catch (Exception e) {}
+        }
     }
 }
